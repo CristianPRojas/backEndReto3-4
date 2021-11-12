@@ -28,18 +28,23 @@ public class Cuatrimoto implements Serializable{
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Integer id;
+   private String name;
    private String brand;
    private Integer year;
+   private String description;
    
    @ManyToOne
    @JoinColumn(name="categoryid")
-   @JsonIgnoreProperties("quadbike")
+   @JsonIgnoreProperties("quadbikes")
    private Categoria category;
    
-   private String name;
-   private String description;
-   
-   
+   @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "quadbike")
+    @JsonIgnoreProperties({"quadbike","client"})
+    private List<Mensajes> messages;
+    
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "quadbike")
+    @JsonIgnoreProperties({"quadbike","message"})
+    public List<Reservacion> reservations;
 
     public Integer getId() {
         return id;
@@ -103,16 +108,5 @@ public class Cuatrimoto implements Serializable{
 
     public void setReservations(List<Reservacion> reservations) {
         this.reservations = reservations;
-    }
-   
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "quadbike")
-    @JsonIgnoreProperties({"quadbike","client"})
-    private List<Mensajes> messages;
-    
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "quadbike")
-    @JsonIgnoreProperties({"quadbike","message"})
-    public List<Reservacion> reservations;
-
-       
-   
+    }   
 }
