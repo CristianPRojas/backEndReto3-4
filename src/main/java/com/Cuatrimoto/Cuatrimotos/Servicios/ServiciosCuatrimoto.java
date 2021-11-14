@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *
+ * Servicios CRUD de la clase Cuatrimoto
  * @author Familia Parra Zambra
  */
 
@@ -21,14 +21,28 @@ public class ServiciosCuatrimoto {
     @Autowired
     private CuatrimotoRepositorio metodosCrud;
     
+    /**
+     * Metodo para mostrar los objetos Cuatrimoto.
+     * @return los objetos de metodosCrud
+     */    
     public List<Cuatrimoto> getAll(){
         return metodosCrud.getAll();
     }
     
+    /**
+     * Metodo opcional para busque de objetos
+     * @param idCuatrimoto
+     * @return objeto metodosCrud
+     */
     public Optional<Cuatrimoto> getCuatrimoto(int idCuatrimoto){
         return metodosCrud.getCuatrimoto(idCuatrimoto);
     }
     
+    /**
+     * Metodo para guardar el objeto cuatrimoto
+     * @param cuatrimoto
+     * @return objeto cuatrimoto
+     */
     public Cuatrimoto save(Cuatrimoto cuatrimoto){
         if(cuatrimoto.getId()==null){
             return metodosCrud.save(cuatrimoto);
@@ -43,6 +57,11 @@ public class ServiciosCuatrimoto {
     }
     
 
+    /**
+     * Metodo para actualizar el objeto cuatrimoto
+     * @param cuatrimoto
+     * @return objeto cuatrimoto actualizado
+     */
     public Cuatrimoto update(Cuatrimoto cuatrimoto){
         if(cuatrimoto.getId()!=null){
             Optional<Cuatrimoto> e=metodosCrud.getCuatrimoto(cuatrimoto.getId());
@@ -72,6 +91,11 @@ public class ServiciosCuatrimoto {
         }
     }
     
+    /**
+     * Metodo para borrado de objeto cuatrimoto.
+     * @param cuatrimotoId
+     * @return true.
+     */
     public boolean deleteCuatrimoto(int cuatrimotoId) {
         Boolean aBoolean = getCuatrimoto(cuatrimotoId).map(cuatrimoto -> {
             metodosCrud.delete(cuatrimoto);

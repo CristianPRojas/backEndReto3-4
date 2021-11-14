@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
+ * Controlador que consume los servisio CRUD de la clase Cliente
  * @author Familia Parra Zambra
  */
 
@@ -33,27 +33,53 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClienteControlador {
     @Autowired
     private ServiciosCliente servicios;
+    
+    /**
+     * metodo que permite visualizar los objetos Cliente
+     * @return clase Cliente
+     */
     @GetMapping("/all")
     public List <Cliente> getCliente(){
         return servicios.getAll();
     }
+    
+    /**
+     * Metodo opcional para buscar cliente por id 
+     * @param clientid
+     * @return objeto cliente.
+     */
     @GetMapping("/{id}")
     public Optional<Cliente> getCliente(@PathVariable("id") int clientid) {
         return servicios.getCliente(clientid);
     }
 
+    /**
+     * Metodo de guardado de objeto cliente
+     * @param cliente
+     * @return objeto cliente
+     */
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente save(@RequestBody Cliente cliente) {
         return servicios.save(cliente);
     }
     
+    /**
+     * Metodo para actualizar el objeto cliente
+     * @param cliente
+     * @return nuevo objeto cliente
+     */
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente update(@RequestBody Cliente cliente) {
         return servicios.update(cliente);
     }
 
+    /**
+     * Metodo de borrado de objeto cliente
+     * @param clienteId
+     * @return true
+     */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int clienteId) {

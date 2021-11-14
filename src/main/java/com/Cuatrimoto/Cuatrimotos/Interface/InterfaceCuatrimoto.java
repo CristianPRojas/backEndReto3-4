@@ -8,7 +8,7 @@ import com.Cuatrimoto.Cuatrimotos.Modelo.Cuatrimoto;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- *
+ * Interface que hereda el CrudRepository de springboot
  * @author Familia Parra Zambra
  */
 public interface InterfaceCuatrimoto extends CrudRepository<Cuatrimoto,Integer>{

@@ -8,7 +8,7 @@ import com.Cuatrimoto.Cuatrimotos.Modelo.Mensajes;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- *
+ * Interface que hereda el CrudRepository de springboot
  * @author Familia Parra Zambra
  */
 public interface InterfaceMensaje extends CrudRepository<Mensajes,Integer>{

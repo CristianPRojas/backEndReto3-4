@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
- *
+ * Repositorio con los metodos CRUD.
  * @author Familia Parra Zambra
  */
 @Repository
@@ -21,18 +21,37 @@ public class ClienteRepositorio {
     private InterfaceCliente crud1;
     
 
+    /**
+     * retorna la lista clientes
+     * @return id del objeto crud1.
+     */
     public List<Cliente> getAll(){
         return (List<Cliente>) crud1.findAll();       
     }
     
+    /**
+     * Busqueda de opcional de clientes por id
+     * @param id
+     * @return objeto crud1.
+     */
     public Optional <Cliente> getCliente(int id){
         return crud1.findById(id);
     }
     
+    /**
+     * Recibe el metodo de guardado del objeto cliente.
+     * @param cliente
+     * @return objeto crud1 guardado
+     */
     public Cliente save(Cliente cliente){
         return crud1.save(cliente);
     }
-     public void delete(Cliente cliente){
+    
+    /**
+     * Metodo para borrar el objeto cliente.
+     * @param cliente 
+     */
+    public void delete(Cliente cliente){
         crud1.delete(cliente);
     }
 

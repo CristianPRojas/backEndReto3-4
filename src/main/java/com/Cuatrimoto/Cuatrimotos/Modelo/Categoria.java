@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
+ *Modelo de categoria donde se definen los atributos y relaciones con las tablas de la base.
  * @author Familia Parra Zambra
  */
 
@@ -33,34 +33,66 @@ public class Categoria implements Serializable{
     @JsonIgnoreProperties({"category","message"})
     private List<Cuatrimoto> quadbikes;
 
+    /**
+     * Metodo que retorna el id de la clase.
+     * @return el id de la clase Category
+     */
     public Integer getId() {
         return id;
     }
 
+    /**
+     * Metodo para modificar el id de la clase Category
+     * @param id 
+     */
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
+    /**
+     * Metodo que retorna el name de la clase.
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Metodo para modificar el name de la clase Category
+     * @param name 
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Metodo que retorna la description de la clase.
+     * @return description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Metodo para modificar la description de la clase Category
+     * @param description 
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Metodo que retornael objeto quadbikes.
+     * @return quadbikes
+     */
     public List<Cuatrimoto> getQuadbikes() {
         return quadbikes;
     }
-
+    
+    /**
+     *  Metodo para modificar el objeto quadbikes
+     * @param quadbikes 
+     */
     public void setQuadbike(List<Cuatrimoto> quadbikes) {
         this.quadbikes = quadbikes;
     }

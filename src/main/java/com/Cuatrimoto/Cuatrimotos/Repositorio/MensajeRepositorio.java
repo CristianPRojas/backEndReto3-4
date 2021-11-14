@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
- *
+ * Repositorio de consultar CRUD de la clase Mensaje.
  * @author Familia Parra Zambra
  */
 
@@ -21,18 +21,36 @@ public class MensajeRepositorio {
     @Autowired
     private InterfaceMensaje crud3;
     
+    /**
+     * Retorna el id del objeto crud3
+     * @return Retorna el id del objeto crud
+     */
     public List<Mensajes> getAll(){
         return (List<Mensajes>) crud3.findAll();
     }
     
+    /**
+     * metodo opcional para busqueda por id de la clase Message.
+     * @param id
+     * @return Retorna el id del objeto crud3
+     */
     public Optional<Mensajes> getMessage(int id){
         return crud3.findById(id);
     }
     
+    /**
+     * Metodo Guarda el onjeto mensajes
+     * @param mensajes.
+     * @return guardado del objeto mensajes
+     */
     public Mensajes save(Mensajes mensajes){
         return crud3.save(mensajes);
     }
     
+    /**
+     * Metodo para el borrado de objeto mensajes
+     * @param mensajes 
+     */
     public void delete(Mensajes mensajes){
         crud3.delete(mensajes);
     }

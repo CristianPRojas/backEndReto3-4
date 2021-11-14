@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
+ * Controlador que consume los servisio CRUD de la clase cuatrimoto
  * @author Familia Parra Zambra
  */
 
@@ -38,28 +38,53 @@ public class CuatrimotoControlador {
 
     @Autowired
     private ServiciosCuatrimoto servicio;
+    
+    /**
+     * metodo que permite visualizar los objetos cuatrimoto
+     * @return clase cuatrimoto
+     */
     @GetMapping("all")
     public List <Cuatrimoto> getCuatrimoto(){
         return servicio.getAll();
     }
     
+    /**
+     * Metodo opcional para buscar cuatrimoto por id 
+     * @param idCuatrimoto
+     * @return objeto cuatrimoto.
+     */
     @GetMapping("/{id}")
     public Optional<Cuatrimoto> getOrthesis(@PathVariable("id") int idCuatrimoto) {
         return servicio.getCuatrimoto(idCuatrimoto);
     }
 
+    /**
+     * Metodo de guardado de objeto cuatrimoto
+     * @param cuatrimoto
+     * @return objeto cuatrimoto
+     */
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Cuatrimoto save(@RequestBody Cuatrimoto cuatrimoto) {
         return servicio.save(cuatrimoto);
     }
     
-     @PutMapping("/update")
+    /**
+     * Metodo para actualizar el objeto cuatrimoto
+     * @param cuatrimoto
+     * @return nuevo objeto cuatrimoto
+     */
+    @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Cuatrimoto update(@RequestBody Cuatrimoto cuatrimoto) {
         return servicio.update(cuatrimoto);
     }
 
+    /**
+     * Metodo de borrado de objeto cuatrimoto
+     * @param cuatrimotoId
+     * @return true
+     */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int cuatrimotoId) {

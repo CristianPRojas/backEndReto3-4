@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
+ * Controlador que consume los servisio CRUD de la clase mensajes
  * @author Familia Parra Zambra
  */
 
@@ -33,27 +33,53 @@ import org.springframework.web.bind.annotation.RestController;
 public class MensajeControlador {
     @Autowired
     private ServiciosMensaje servico;
+    
+    /**
+     * metodo que permite visualizar los objetos mensajes
+     * @return clase mensajes
+     */
     @GetMapping("/all")
     public List<Mensajes> getMessages(){
         return servico.getAll();
     }
 
+    /**
+     * Metodo opcional para buscar mensajes por id 
+     * @param messageId
+     * @return objeto mensajes.
+     */
     @GetMapping("/{id}")
     public Optional<Mensajes> getMessage(@PathVariable("id") int messageId) {
         return servico.getMessage(messageId);
     }
 
+    /**
+     * Metodo de guardado de objeto mensajes
+     * @param mensajes
+     * @return objeto mensajes
+     */
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Mensajes save(@RequestBody Mensajes message) {
         return servico.save(message);
     }
+    
+    /**
+     * Metodo para actualizar el objeto message
+     * @param message
+     * @return nuevo objeto message
+     */
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Mensajes update(@RequestBody Mensajes mensaje) {
         return servico.update(mensaje);
     }
 
+    /**
+     * Metodo de borrado de objeto mensaje
+     * @param messageId
+     * @return true
+     */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int messageId) {

@@ -8,7 +8,7 @@ import com.Cuatrimoto.Cuatrimotos.Modelo.Cliente;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- *
+ * Interface que hereda el CrudRepository de springboot
  * @author Familia Parra Zambra
  */
 

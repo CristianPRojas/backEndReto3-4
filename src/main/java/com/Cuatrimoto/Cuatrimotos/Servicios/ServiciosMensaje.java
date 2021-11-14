@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *
+ * Servicios CRUD de la clase mensaje
  * @author Familia Parra Zambra
  */
 
@@ -21,14 +21,28 @@ public class ServiciosMensaje {
     @Autowired
     private MensajeRepositorio metodosCrud;
     
+    /**
+     * Metodo para mostrar los objetos Mensajes.
+     * @return los objetos de metodosCrud
+     */ 
     public List<Mensajes> getAll(){
         return metodosCrud.getAll();
     }
 
+    /**
+     * Metodo opcional para busque de objetos
+     * @param messageId
+     * @return objeto metodosCrud
+     */
     public Optional<Mensajes> getMessage(int messageId) {
         return metodosCrud.getMessage(messageId);
     }
     
+    /**
+     * Metodo para guardar el objeto message
+     * @param message
+     * @return objeto message
+     */
     public Mensajes save(Mensajes message){
         if(message.getIdMessage()==null){
             return metodosCrud.save(message);
@@ -41,6 +55,12 @@ public class ServiciosMensaje {
             }
         }
     }
+    
+     /**
+     * Metodo para actualizar el objeto message
+     * @param message
+     * @return objeto message actualizado
+     */
     public Mensajes update(Mensajes message){
         if(message.getIdMessage()!=null){
             Optional<Mensajes> e= metodosCrud.getMessage(message.getIdMessage());
@@ -58,6 +78,11 @@ public class ServiciosMensaje {
         }
     }
 
+    /**
+     * Metodo para borrado de objeto message.
+     * @param messageId
+     * @return true.
+     */
     public boolean deleteMessage(int messageId) {
         Boolean aBoolean = getMessage(messageId).map(message -> {
             metodosCrud.delete(message);

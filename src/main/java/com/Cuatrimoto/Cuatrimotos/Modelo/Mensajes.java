@@ -37,34 +37,66 @@ public class Mensajes implements Serializable {
     @JsonIgnoreProperties({"messages", "reservations"})
     private Cliente client;
 
+    /**
+     * Metodo que retorna el idMessage
+     * @return idMessage
+     */
     public Integer getIdMessage() {
         return idMessage;
     }
 
+    /**
+     * Metodo que modifica el idMessage de la clase mensaje.
+     * @param idMessage 
+     */
     public void setIdMessage(Integer idMessage) {
         this.idMessage = idMessage;
     }
 
+    /**
+     * Metodo que retorna el messageText
+     * @return messageText
+     */
     public String getMessageText() {
         return messageText;
     }
 
+    /**
+     * Metodo que modifica el messageText de la clase mensaje.
+     * @param messageText 
+     */
     public void setMessageText(String messageText) {
         this.messageText = messageText;
     }
 
+    /**
+     * Metodo que retorna el objeto quadbike.
+     * @return quadbike
+     */
     public Cuatrimoto getQuadbike() {
         return quadbike;
     }
 
+    /**
+     * Metodo que modifica el objeto quadbike.
+     * @param quadbike 
+     */
     public void setQuadbike(Cuatrimoto quadbike) {
         this.quadbike = quadbike;
     }
 
+    /**
+     * Metodo que retorna el objeto client.
+     * @return client
+     */
     public Cliente getClient() {
         return client;
     }
 
+    /**
+     * Metodo que modifica el objeto client.
+     * @param client 
+     */
     public void setClient(Cliente client) {
         this.client = client;
     }
